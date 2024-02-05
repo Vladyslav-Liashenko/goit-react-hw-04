@@ -1,0 +1,12 @@
+.header {
+  background-color: rgb(62, 73, 194);
+  padding: 15px;
+}
+.input {
+  min-width: 250px;
+  min-height: 30px;
+}
+.form {
+  display: flex;
+  justify-content: center;
+}

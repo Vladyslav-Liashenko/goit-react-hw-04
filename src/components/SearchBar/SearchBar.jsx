@@ -1,3 +1,6 @@
+import styled from './SeaechBar.module.css';
+import search from '../../assets/search-svgrepo-com.svg';
+
 export const SearchBar = ({ onSearch }) => {
   const handleSubmit = e => {
     e.preventDefault();
@@ -6,17 +9,20 @@ export const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <div>
+    <div className={styled.header}>
       <header>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styled.form}>
+          <button type="submit">
+            <img src={search} alt="Search Icon" />
+          </button>
           <input
+            className={styled.input}
             type="text"
             name="query"
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
           />
-          <button type="submit">Search</button>
         </form>
       </header>
     </div>
