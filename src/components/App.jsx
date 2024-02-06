@@ -53,12 +53,12 @@ export const App = () => {
     <div>
       <SearchBar onSearch={searchImages} />
       {photos.length > 0 && <ImageGallery photos={photos} />}
-      {loading && <Loader />}
       <LoadMoreBtn
         handleLoadMore={handleLoadMore}
         totalPages={totalPages}
         page={page}
       />
+      {loading && <Loader />}
       {error && <ErrorMassage />}
     </div>
   );
