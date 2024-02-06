@@ -1,7 +1,7 @@
-export const LoadMoreBtn = ({ handleLoadMore, showButton, noMorePages }) => {
+export const LoadMoreBtn = ({ handleLoadMore, totalPages, page }) => {
   return (
     <div>
-      {showButton && !noMorePages && (
+      {totalPages >= page && (
         <button onClick={handleLoadMore}>Load more</button>
       )}
     </div>
