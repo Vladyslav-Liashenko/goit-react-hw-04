@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ImageModal from '../ImageModal/ImageModal';
 import styled from './ImageGallery.module.css';
-import { ImageCard } from './imageCard/ImageCard';
+import { ImageCard } from './ImageCard/ImageCard';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
