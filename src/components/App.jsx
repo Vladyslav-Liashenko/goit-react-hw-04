@@ -15,6 +15,7 @@ export const App = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [searched, setSearched] = useState(false);
 
   const searchImages = async query => {
     setQuery(query);
@@ -22,6 +23,7 @@ export const App = () => {
     setPhotos([]);
     setLoading(false);
     setError(false);
+    setSearched(true);
   };
 
   const handleLoadMore = () => {
@@ -54,7 +56,9 @@ export const App = () => {
       <SearchBar onSearch={searchImages} />
       {photos.length > 0 && <ImageGallery photos={photos} />}
       {loading && <Loader />}
-      <LoadMoreBtn handleLoadMore={handleLoadMore} />
+      <LoadMoreBtn handleLoadMore={handleLoadMore}
+      showButton={searched} 
+        noMorePages={photos.length < page * 10} />
       {error && <ErrorMassage />}
     </div>
   );
