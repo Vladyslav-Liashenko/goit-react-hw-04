@@ -1,4 +1,3 @@
-import axios from 'axios';
 import './App.css';
 import { SearchBar } from './SearchBar/SearchBar';
 import { useEffect, useState } from 'react';
@@ -6,6 +5,7 @@ import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Loader } from './Loader/Loader';
 import { ErrorMassage } from './ErrorMessage/ErrorMassage';
 import { LoadMoreBtn } from './LoadMoreBtn/LoadMoreBtn';
+import { fetchPhoto } from './Services/api';
 
 export const App = () => {
   const accessKey = 'I_SGforXj0P7ovqaJ6GJpJk2xEwutBiTFEwpgZcNd1M';
@@ -38,10 +38,8 @@ export const App = () => {
       try {
         setError(false);
         setLoading(true);
-        const response = await axios.get(
-          `https://api.unsplash.com/search/photos/?client_id=${accessKey}&query=${query}&page=${page}`
-        );
-        setPhotos(prevPhotos => [...prevPhotos, ...response.data.results]);
+        const fetchData = await fetchPhoto(accessKey, query, page);
+        setPhotos(prevPhotos => [...prevPhotos, ...fetchData]);
       } catch (error) {
         setError(true);
       } finally {
